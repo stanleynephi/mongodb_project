@@ -1,0 +1,2 @@
+#ignore these files during the commit
+.env
