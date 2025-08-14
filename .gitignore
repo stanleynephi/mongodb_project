@@ -1,2 +1,4 @@
 #ignore these files during the commit
 .env
+.gitignore
+node_modules
