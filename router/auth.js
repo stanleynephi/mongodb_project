@@ -16,7 +16,7 @@ passport.use(
       userInfoURL: "https://" + process.env["AUTH0_DOMAIN"] + "/userinfo",
       clientID: process.env["AUTH0_CLIENT_ID"],
       clientSecret: process.env["AUTH0_CLIENT_SECRET"],
-      callbackURL: "/oauth2/redirect",
+      callbackURL: "https://mongodb-project-3qz4.onrender.com/oauth2/redirect",
       scope: ["profile"],
     },
     function verify(issuer, profile, cb) {
@@ -77,7 +77,7 @@ router.get("/logout", function (req, res, next) {
       //redirect page parameters
       let params = {
         client_id: process.env.AUTH0_CLIENT_ID,
-        returnTo: "http://localhost:3000/",
+        returnTo: "https://mongodb-project-3qz4.onrender.com",
       }
 
       //redirect page
