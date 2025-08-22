@@ -11,7 +11,21 @@ const { route } = require(".")
  */
 
 router.use("/api-docs", swaggerui.serve)
-router.use("/api-docs", swaggerui.setup(swaggerdoc))
+router.use(
+  "/api-docs",
+  swaggerui.setup(swaggerdoc, {
+    swaggerOptions: {
+      oauth2RedirectUrl:
+        process.env.NODE_ENV === "production"
+          ? "https://mongodb-project-3qz4.onrender.com/api-docs/oauth2-redirect.html"
+          : "http://localhost:3000/api-docs/oauth2-redirect.html",
+      oauth: {
+        clientId: process.env.AUTH0_CLIENT_ID,
+        scopes: ["openid", "profile", "email"],
+      },
+    },
+  })
+)
 
 //use the router and the http verbs to work arround the api
 //1. get
