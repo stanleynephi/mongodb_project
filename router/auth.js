@@ -72,7 +72,7 @@ router.get("/logout", function (req, res, next) {
       //redirect page parameters
       let params = {
         client_id: process.env.AUTH0_CLIENT_ID,
-        returnTo: "http://localhost:3000/",
+        returnTo: "https://mongodb-project-3qz4.onrender.com",
       }
 
       //redirect page
