@@ -14,10 +14,25 @@ const database = require("./database/index")
 const PORT = 3000
 const HOSTNAME = "localhost"
 
-app.use(cors())
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://mongodb-project-3qz4.onrender.com",
+]
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true)
+      } else {
+        callback(new Error("Not allowed by CORS"))
+      }
+    },
+    credentials: true, // allow cookies/sessions
+  })
+)
 
 app.use(bodyParser.json()).use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*")
   next()
 })
 
