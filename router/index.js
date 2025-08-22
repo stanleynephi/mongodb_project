@@ -1,6 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const controller = require("../controller/index")
+const utilities = require("../utilities/index")
 /**
  * database connection is done automatically on start up hence no need to call is several times
  * when performing crud on the database
@@ -8,7 +9,7 @@ const controller = require("../controller/index")
 
 //use the router and the http verbs to work arround the api
 //1. get
-router.get("/get", controller.getmovies)
+router.get("/get", utilities.checkloggedIn, controller.getmovies)
 
 // //2. get:id
 // router.get("/get/:id", async (req, res) => {
