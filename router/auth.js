@@ -29,7 +29,12 @@ passport.use(
 passport.serializeUser(function (user, cb) {
   console.log(user)
   process.nextTick(function () {
-    cb(null, { id: user.id, username: user.username, name: user.displayName })
+    cb(null, {
+      id: user.id,
+      username: user.username,
+      name: user.displayName,
+      email: user.email,
+    })
   })
 })
 
